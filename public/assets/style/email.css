@@ -1,0 +1,183 @@
+@font-face {
+    font-family: "All the Way to the Sun";
+    src: url('../fonts/Meta-old-French.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Grandstander";
+    src: url('../fonts/Cooper-Regular.ttf');
+    font-weight: normal; 
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Magic";
+    src: url('../fonts/LEMONMILK-Regular.otf');
+    font-weight: normal; 
+    font-style: normal;
+}
+/* Contenedor principal */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f9f9f9;
+}
+
+.container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+}
+
+/* Icono centrado */
+.icon-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.icon-container i {
+    font-size: 48px;
+    color: #e6b000; /* Color amarillo */
+}
+
+/* Título */
+h1 {
+    color: #860000; /* Color rojo oscuro */
+    margin-bottom: 20px;
+    font-family: "Grandstander", Arial, sans-serif;
+    font-size: 30px;
+}
+
+/* Texto de recuperación */
+p {
+    font-family: "Grandstander", Arial, sans-serif;
+    font-size: 22px;
+    color: #000000; /* Color anaranjado */
+    margin: 15px 0;
+}
+/* Contenedor del icono de correo */
+.input-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+/* Icono de correo dentro del círculo */
+.email-icon-container {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 30px;
+    height: 30px;
+    background-color: #e8992a; /* Color del círculo */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.email-icon-container i {
+    color: white;
+}
+
+/* Input de correo */
+.form-control {
+    width: 100%;  /* Aseguramos que ocupe todo el ancho disponible */
+    padding: 10px 10px 10px 68px; /* Ajuste para dejar suficiente espacio para el icono */
+    border: 1px solid #e8992a; /* Color del borde */
+    border-radius: 5px;
+    font-size: 16px;
+    color: black;
+    box-sizing: border-box;  /* Asegura que el padding no afecte el tamaño total */
+}
+
+
+.form-control:focus {
+    border-color: #860000;
+    outline: none;
+}
+
+/* Botón Enviar enlace */
+.login-button {
+    background-color: #da8e26; /* Color solicitado */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: "Magic", Arial, sans-serif;
+    width: 100%; /* Asegura que el botón ocupe todo el ancho */
+}
+
+.login-button:hover {
+    background-color: #a8701d;
+}
+
+/* Mensaje de éxito */
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.invalid-feedback {
+    color: red;
+    font-size: 14px;
+}
+
+/* Título centrado "El Emperador" */
+.brand-title {
+    text-align: center;
+    color: #e8992a ; /* Color azul */
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-family: "All the Way to the Sun", Arial, sans-serif;
+}
+
+/* Botón "Ir a Iniciar Sesión" */
+.inicio-sesion-button {
+    background-color: #ffffff; /* Color blanco */
+    color: #da8e26; /* Color de las letras */
+    border: 2px solid #da8e26; /* Borde del botón */
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    margin-top: 15px;
+    font-family: "Magic", Arial, sans-serif;
+}
+
+.inicio-sesion-button:hover {
+    background-color: #f2e7d5;
+}
+
+/* Estilos para el contenedor del logo */
+.brand-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    text-decoration: none;
+}
+
+.brand-image {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
