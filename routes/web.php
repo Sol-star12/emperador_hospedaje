@@ -32,6 +32,15 @@ Route::get('/habitaciones/limpieza/registrar', action: [App\Http\Controllers\Reg
 Route::get('/habitaciones/limpieza/agregarInsumos', action: [App\Http\Controllers\InsumosLimpiezaController::class, 'create'])->name('habitaciones.limpieza.agregarInsumos')->middleware('auth');
 Route::post('/habitaciones/limpieza/agregarInsumos', action: [App\Http\Controllers\InsumosLimpiezaController::class, 'store'])->name('limpieza.agregarInsumos')->middleware('auth');
 
+//Tipo Habitación
+//      Listar
+Route::get('/habitaciones/tipohabitacion', [App\Http\Controllers\TipoHabitacionController::class, 'index'])->name('habitaciones.tipohabitacion.index')->middleware('auth');
+//      Crear
+Route::get('/habitaciones/tipohabitacion/create', [App\Http\Controllers\TipoHabitacionController::class, 'create'])->name('habitaciones.tipohabitacion.create')->middleware('auth');
+Route::post('/habitaciones/tipohabitacion', [App\Http\Controllers\TipoHabitacionController::class, 'store'])->name('habitaciones.tipohabitacion.store')->middleware('auth');
+//      Editar
+//      Vistar de Editar
+Route::get('/habitaciones/tipohabitacion/{habitacion}/edit', [App\Http\Controllers\TipoHabitacionController::class, 'edit'])->name('habitaciones.tipohabitacion.edit')->middleware('auth');
 
 
 //Reservas
