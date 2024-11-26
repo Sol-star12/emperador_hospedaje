@@ -7,8 +7,15 @@ use Illuminate\Http\Request;
 
 class InsumosLimpiezaController extends Controller
 {
+
+    /**
+     * Muestra un listado de insumos de limpieza con opción de filtro por categoría.
+     */
     public function index(Request $request)
     {
+        /**
+     * Muestra un listado de insumos de limpieza con opción de filtro por categoría.
+     */
         $categoria_id = $request->input('categoria_id');
         $insumos = InsumosLimpieza::when($categoria_id, function ($query, $categoria_id) {
             return $query->where('idcategoria', $categoria_id);
