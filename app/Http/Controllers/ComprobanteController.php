@@ -2,63 +2,86 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ComprobanteRequest;
+use App\Models\Comprobante;
 use Illuminate\Http\Request;
 
 class ComprobanteController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Muestra una lista de comprobantes con soporte para búsqueda y ordenación.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $query = Comprobante::query();
+
+        // Filtrar por términos de búsqueda
+        if ($request->filled('search')) {
+            $search = $request->input('search');
+            $query->where('numero', 'like', "%$search%")
+                  ->orWhere('descripcion', 'like', "%$search%");
+        }
+
+        // Ordenar resultados por un campo y dirección
+        $sortBy = $request->input('sort_by', 'id'); // Campo por defecto: 'id'
+        $sortOrder = $request->input('sort_order', 'asc'); // Dirección por defecto: 'asc'
+
+        $comprobantes = $query->orderBy($sortBy, $sortOrder)->paginate(10);
+
+        return view('comprobantes.index', compact('comprobantes'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Muestra el formulario para crear un nuevo comprobante.
      */
     public function create()
     {
-        //
+        return view('comprobantes.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Almacena un nuevo comprobante en la base de datos.
      */
-    public function store(Request $request)
+    public function store(ComprobanteRequest $request)
     {
-        //
+        Comprobante::create($request->validated());
+
+        return redirect()->route('comprobantes.index')->with('success', 'Comprobante creado exitosamente.');
     }
 
     /**
-     * Display the specified resource.
+     * Muestra un comprobante específico.
      */
-    public function show(string $id)
+    public function show(Comprobante $comprobante)
     {
-        //
+        return view('comprobantes.show', compact('comprobante'));
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Muestra el formulario para editar un comprobante existente.
      */
-    public function edit(string $id)
+    public function edit(Comprobante $comprobante)
     {
-        //
+        return view('comprobantes.edit', compact('comprobante'));
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualiza un comprobante existente en la base de datos.
      */
-    public function update(Request $request, string $id)
+    public function update(ComprobanteRequest $request, Comprobante $comprobante)
     {
-        //
+        $comprobante->update($request->validated());
+
+        return redirect()->route('comprobantes.index')->with('success', 'Comprobante actualizado exitosamente.');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Elimina un comprobante de la base de datos.
      */
-    public function destroy(string $id)
+    public function destroy(Comprobante $comprobante)
     {
-        //
+        $comprobante->delete();
+
+        return redirect()->route('comprobantes.index')->with('success', 'Comprobante eliminado exitosamente.');
     }
 }
