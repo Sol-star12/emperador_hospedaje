@@ -9,10 +9,22 @@ use App\Models\Usuario;
 use App\Models\Habitacion;
 class RegistroLimpiezaController extends Controller
 {
+    /**
+     * Obtiene la fecha y hora actual en el formato d/m/Y H:i.
+     */
     public function obtenerFechaHoraActual()
     {
-        return Carbon::now()->format('d/m/Y H:i');
+        return Carbon::now()->format('d/m/Y H:i'); /**tring Fecha y hora actual.
+     */
     }
+    /**
+     * Muestra la página principal del registro de limpieza.
+     * 
+     * - Obtiene la fecha y hora actual.
+     * - Recupera el usuario autenticado y su rol.
+     * - Define variables dependiendo del rol (administrador o empleado).
+     * - Recupera habitaciones con estado de limpieza "Sucio".
+     */
     public function index()
 {
     // Obtener la fecha y hora actual
@@ -43,7 +55,9 @@ class RegistroLimpiezaController extends Controller
     return view('habitaciones.limpieza.index', compact('fechaHoraActual', 'empleados', 'usuarioAutenticado', 'habitacionesSucias'));
 }
 
-
+ /**
+     * Valida los datos enviados para el registro de limpieza.
+     */
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -51,32 +65,45 @@ class RegistroLimpiezaController extends Controller
             'idempleado' => 'required|integer',
             'estado' => 'required|string|max:20',
         ]);
+        /**
+     * Muestra el formulario para crear un nuevo registro de limpieza.
+     */
     }
     public function create()
     {
         //
     }
-
+ /**
+     * Almacena un nuevo registro de limpieza en la base de datos.
+     */
     public function store(Request $request)
     {
         //
     }
-
+ /**
+     * Muestra los detalles de un registro de limpieza específico.
+     */
     public function show(string $id)
     {
         //
     }
-
+/**
+     * Muestra el formulario para editar un registro de limpieza.
+     */
     public function edit(string $id)
     {
         //
     }
-
+/**
+     * Actualiza un registro de limpieza específico en la base de datos.
+     */
     public function update(Request $request, string $id)
     {
         //
     }
-
+ /**
+     * Elimina un registro de limpieza de la base de datos.
+     */
     public function destroy(string $id)
     {
         //
